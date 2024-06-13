@@ -1,0 +1,210 @@
+<nav id="sidebar" class="sidebar">
+<div class="sidebar-content">
+    <div class="usuario">
+        <img src="https://img.freepik.com/fotos-gratis/mulher-de-tiro-medio-trabalhando-em-casa_23-2149249768.jpg?w=996&t=st=1717714402~exp=1717715002~hmac=f407f1bad82d0bf28e5ce23257d59cd2a713962e1bc1a911c6dc321eac1b9db2"
+            alt="" id="user-avatar" alt="foto-perfil">
+        <p id="user-infos">
+            <span class="item-descricao">
+                [nome usuario]
+            </span>
+            <span class="item-descricao">
+                [Perfil]
+            </span>
+        </p>
+    </div>
+    <ul id="side-items">
+        <li class="side-item active">
+            <a href="/dashboard">
+                <i class="fas fa-chart-line"></i>
+                <span class="item-descricao">Dashboard</span>
+            </a>
+        </li>
+        <li class="side-item">
+            <a href="/usuario">
+                <i class="fas fa-user"></i>
+                <span class="item-descricao">Usuarios</span>
+            </a>
+        </li>
+        <li class="side-item">
+            <a href="/norocorp/public/">
+                <i class="fas fa-chart-line"></i>
+                <span class="item-descricao">Dashboard</span>
+            </a>
+        </li>
+        <li class="side-item">
+            <a href="/admin">
+                <i class="fas fa-gear"></i>
+                <span class="item-descricao">Configurações</span>
+            </a>
+        </li>
+    </ul>
+    <button id="open-btn">
+        <i id="open-btn-icon" class="fas fa-chevron-right"></i>
+    </button>
+</div>
+<div id="logout">
+    <button id="logout-btn">
+        <i class="fas fa-right-from-bracket"></i>
+        <span class="item-descricao">Sair</span>
+    </button>
+</div>
+</nav>
+
+
+.sidebar {
+    background-color: var(--sidebar-bg-color);
+    height: 100vh;
+    overflow-y: auto;
+    /* border-radius:  5px 0 0 5px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    transition: all var(--transition-duration);
+    min-width: var(--sidebar-min-width);
+}
+
+.sidebar-content {
+    padding: 12px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+#user-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#user-infos {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+#user-infos span:last-child {
+    color: grey;
+    font-size: 12px;
+}
+
+#side-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sidebar-item-gap);
+    list-style: none;
+}
+
+.side-item {
+    border-radius: 8px;
+    padding: var(--item-padding);
+    cursor: pointer;
+}
+
+.side-item.active {
+    background-color: var(--accent-color);
+}
+
+.side-item:hover:not(.active), #logout-btn:hover {
+    background-color: var(--sidebar-item-hover-bg);
+    color: var(--sidebar-item-hover-text); /* Definindo a cor branca para o texto no hover */
+}
+
+.side-item:hover a, 
+.side-item:hover i, 
+#logout-btn:hover i, 
+#logout-btn:hover span {
+    color: var(--sidebar-item-hover-text); /* Definindo a cor branca para os ícones e textos no hover */
+}
+
+.side-item a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sidebar-text-color);
+}
+
+.side-item.active a {
+    color: white;
+}
+
+.side-item a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--sidebar-icon-color);
+}
+
+#logout {
+    border-top: 1px solid black;
+    padding: 12px;
+}
+
+#logout-btn {
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 8px;
+    text-align: start;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--logout-btn-text);
+}
+
+#open-btn {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    top: 2px;
+    background-color: purple;
+    color: wheat;
+    border-radius: var(--border-radius);
+    width: 20px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+#open-btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.open-sidebar #open-btn-icon {
+    transform: rotate(180deg);
+}
+
+.item-descricao {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width 0.6s;
+    height: 0;
+}
+
+.sidebar.open-sidebar {
+    min-width: var(--sidebar-expanded-width);
+}
+
+.sidebar.open-sidebar .item-descricao {
+    width: 150px; 
+    height: auto;
+}
+
+.sidebar.open-sidebar .side-item a {
+    justify-content: flex-start;
+    gap: 14px;
+}
